@@ -42,7 +42,7 @@ class JavaPackagerDeployPkg implements CommandLineArgumentProvider {
         } else {
             cmd.add("-nosign")
         }
-        return cmd
+        return (Iterable<String>) cmd;
     }
 
 }
