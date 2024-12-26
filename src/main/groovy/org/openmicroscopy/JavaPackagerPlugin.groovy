@@ -88,7 +88,7 @@ class JavaPackagerPlugin implements Plugin<Project> {
     void configureMain(InstallOptions deploy) {
         project.afterEvaluate {
             JavaApplication javaApplication = project.extensions.getByType(JavaApplication)
-            deploy.mainClassName.convention(javaApplication.mainClassName)
+            deploy.mainClassName.convention(javaApplication.mainClass)
             deploy.javaOptions.convention(javaApplication.applicationDefaultJvmArgs)
 
             // The mainJar is the archive created by the 'jar' task
@@ -121,7 +121,7 @@ class JavaPackagerPlugin implements Plugin<Project> {
 
                     jp.setGroup(DISTRIBUTION_GROUP)
                     jp.setDescription("Creates a $outputType bundle")
-                    jp.commandLine("javapackager", "-deploy")
+                    jp.commandLine("javapackage", "-deploy")
                     jp.argumentProviders.addAll(deploy.createCmdArgProviders(outputType))
                 }
             })
